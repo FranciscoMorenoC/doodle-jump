@@ -6,7 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let isGameOver = false;
     let platformCount = 5;
     let platforms = []
-
+    let upTimerId 
+    let downTimerId
 
     function createDoodler() {
         grid.appendChild(doodler);
@@ -52,7 +53,13 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       function jump(){
-        
+            upTimerId = setInterval(function (){
+               doodlerBottomSpace += 20;
+               doodler.style.bottom = doodlerBottomSpace + 'px'
+               if (doodlerBottomSpace > 350) {
+                    fall()
+               }
+            },30)
       }
   
     function start(){
